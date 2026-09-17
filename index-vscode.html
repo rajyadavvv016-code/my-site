@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raj Yadav — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15150F;
+    --bg-soft:#1C1C15;
+    --cream:#F2EEDF;
+    --olive:#93A17B;
+    --olive-dark:#6E7C5A;
+    --olive-line:#3B3E30;
+    --muted:#A7A495;
+    --card:#211F17;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+  .display{font-family:'Archivo Black',sans-serif; letter-spacing:-0.01em;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:36px 0 64px;}
+  .hero-topbar{display:flex;justify-content:space-between;font-size:13px;letter-spacing:0.12em;color:var(--muted);padding:0 0 8px;}
+  .hero-headline{
+    font-size:clamp(64px, 13vw, 168px);
+    line-height:0.86;
+    color:var(--cream);
+    text-transform:uppercase;
+    margin:8px 0 6px;
+    word-break:break-word;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:32px;align-items:center;margin-top:12px;}
+  .hello{font-size:13px;letter-spacing:0.14em;color:var(--muted);margin-bottom:6px;}
+  .name{font-family:'Archivo Black',sans-serif;font-size:clamp(34px,5.5vw,54px);line-height:1.02;color:var(--cream);text-transform:uppercase;margin-bottom:16px;}
+  .badge{
+    display:inline-block;background:var(--olive);color:#14140F;
+    font-size:12px;font-weight:700;letter-spacing:0.08em;
+    padding:8px 16px;text-transform:uppercase;margin-bottom:18px;
+  }
+  .hero-bio{max-width:380px;color:var(--muted);font-size:15px;margin-bottom:26px;}
+  .sig{font-family:'Archivo Black';font-style:italic;font-size:22px;color:var(--cream);opacity:0.7;transform:rotate(-3deg);display:inline-block;}
+
+  .hero-visual{position:relative;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;}
+  .blob{
+    position:absolute;width:78%;height:78%;border-radius:50%;
+    background:var(--olive-dark);opacity:0.55;
+  }
+  .monogram-circle{
+    position:relative;width:72%;aspect-ratio:1/1;border-radius:50%;
+    background:linear-gradient(160deg,#2A2A20,#14140F 70%);
+    border:1px solid var(--olive-line);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 30px 60px rgba(0,0,0,0.4);
+  }
+  .monogram{font-family:'Archivo Black';font-size:clamp(48px,9vw,110px);color:var(--olive);letter-spacing:-0.03em;}
+  .rotating-badge{position:absolute;top:6%;right:-2%;width:110px;height:110px;}
+  .rotating-badge text{fill:var(--muted);font-size:7.4px;letter-spacing:2px;text-transform:uppercase;}
+  .rotating-badge .star{fill:none;stroke:var(--cream);stroke-width:1;}
+
+  .hero-side-info{position:absolute;right:48px;top:270px;text-align:right;font-size:13px;color:var(--muted);letter-spacing:0.04em;}
+  .hero-side-info .rule{width:36px;height:1px;background:var(--olive-line);margin:10px 0 10px auto;}
+  .hero-side-info strong{color:var(--cream);display:block;letter-spacing:0.1em;font-size:12px;}
+
+  hr.section-rule{border:none;border-top:1px solid var(--olive-line);margin:0;}
+
+  /* ---------- SECTION LABEL ---------- */
+  .section{padding:56px 0;}
+  .eyebrow{font-size:12px;letter-spacing:0.14em;color:var(--muted);margin-bottom:6px;}
+  .section-title{font-family:'Archivo Black';font-size:clamp(32px,5vw,46px);color:var(--olive);text-transform:uppercase;margin-bottom:28px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-layout{display:grid;grid-template-columns:0.9fr 2.1fr;gap:40px;}
+  .services-intro{color:var(--muted);font-size:14px;max-width:220px;}
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+  .service-item h4{font-size:14px;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;color:var(--cream);}
+  .service-item p{font-size:13.5px;color:var(--muted);}
+  .service-icon{width:22px;height:22px;margin-bottom:14px;color:var(--olive);}
+
+  /* ---------- WORK ---------- */
+  .work-layout{display:grid;grid-template-columns:0.8fr 2.2fr;gap:32px;align-items:start;}
+  .work-intro p{color:var(--muted);font-size:14px;max-width:220px;margin-bottom:20px;}
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--olive-line);color:var(--cream);
+    font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+    padding:12px 18px;text-decoration:none;background:transparent;cursor:pointer;
+  }
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .work-card{background:var(--card);border:1px solid var(--olive-line);}
+  .work-thumb{aspect-ratio:4/3;background:linear-gradient(135deg,#2c2c22,#141410);display:flex;align-items:center;justify-content:center;padding:18px;}
+  .work-thumb span{font-family:'Archivo Black';font-size:15px;text-align:left;line-height:1.15;color:var(--cream);text-transform:uppercase;}
+  .work-meta{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;}
+  .work-meta div p{font-size:13px;color:var(--cream);font-weight:600;}
+  .work-meta div span{font-size:12px;color:var(--muted);}
+  .arrow{color:var(--olive);font-size:16px;}
+
+  /* ---------- PROCESS ---------- */
+  .process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  .step-num{font-family:'Archivo Black';font-size:20px;color:var(--olive);margin-bottom:14px;}
+  .step h5{font-size:13px;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;}
+  .step p{font-size:13px;color:var(--muted);}
+  .process-intro{color:var(--muted);font-size:14px;max-width:220px;margin-bottom:28px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-top{display:grid;grid-template-columns:1.6fr 1fr 0.6fr;gap:24px;align-items:center;padding:56px 0 40px;}
+  .together{font-family:'Archivo Black';font-size:clamp(40px,7vw,72px);color:var(--olive);text-transform:uppercase;}
+  .contact-note p{color:var(--muted);font-size:14px;margin-bottom:16px;}
+  .avail-badge{width:120px;height:120px;border:1px solid var(--olive-line);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;margin-left:auto;}
+  .avail-badge svg text{fill:var(--muted);font-size:6.5px;letter-spacing:1.5px;text-transform:uppercase;}
+
+  .contact-footer{display:grid;grid-template-columns:1fr auto auto;gap:32px;align-items:center;padding:28px 0;border-top:1px solid var(--olive-line);font-size:13.5px;color:var(--muted);}
+  .contact-footer strong{color:var(--cream);}
+  .socials{display:flex;gap:14px;}
+  .socials span{width:30px;height:30px;border:1px solid var(--olive-line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
+  .qr-block{display:flex;align-items:center;gap:12px;}
+  .qr{width:56px;height:56px;background:var(--cream);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:9px;text-align:center;font-weight:700;}
+
+  footer.credit{text-align:center;color:var(--olive-line);font-size:11px;padding:18px 0 30px;}
+
+  @media (max-width:880px){
+    .wrap{padding:0 22px;}
+    .hero-grid,.services-layout,.work-layout{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .work-grid{grid-template-columns:1fr;}
+    .process-steps{grid-template-columns:repeat(2,1fr);}
+    .contact-top{grid-template-columns:1fr;text-align:left;}
+    .avail-badge{margin:0;}
+    .contact-footer{grid-template-columns:1fr;text-align:left;gap:16px;}
+    .hero-side-info{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-topbar">
+      <span>2026</span>
+      <span>UI/UX DESIGNER</span>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <div class="hero-headline">Portfolio</div>
+        <div class="hello">HELLO, I'M</div>
+        <div class="name">Raj Yadav</div>
+        <span class="badge">Web &amp; UI/UX Designer</span>
+        <p class="hero-bio">I design digital experiences that are beautiful, functional, and built to make an impact — from concept to interface, with purpose and precision.</p>
+        <div class="sig">Raj Yadav</div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="blob"></div>
+        <div class="monogram-circle">
+          <div class="monogram">RY</div>
+        </div>
+        <svg class="rotating-badge" viewBox="0 0 100 100">
+          <defs>
+            <path id="circlePath" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+          </defs>
+          <text><textPath href="#circlePath">DESIGNING DIGITAL EXPERIENCES • </textPath></text>
+          <path class="star" d="M50 40 L52 48 L60 50 L52 52 L50 60 L48 52 L40 50 L48 48 Z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-side-info">
+      <strong>Based in [Your City]</strong>
+      <div class="rule"></div>
+      <span>Available for freelance</span>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="eyebrow">WHAT I DO</div>
+    <div class="section-title">Services</div>
+    <div class="services-layout">
+      <p class="services-intro">A focused set of skills I bring to every project, from first sketch to finished product.</p>
+      <div class="services-grid">
+        <div class="service-item">
+          <h4>UI/UX Design</h4>
+          <p>Creating intuitive, engaging interfaces that deliver seamless user experiences.</p>
+        </div>
+        <div class="service-item">
+          <h4>Web Design</h4>
+          <p>Designing modern, responsive websites that communicate and convert.</p>
+        </div>
+        <div class="service-item">
+          <h4>Branding</h4>
+          <p>Building visual identities that reflect your brand and make you unforgettable.</p>
+        </div>
+        <div class="service-item">
+          <h4>Design Systems</h4>
+          <p>Developing scalable design systems for consistency across all platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- WORK -->
+  <section class="section">
+    <div class="eyebrow">SELECTED WORK</div>
+    <div class="section-title">Work</div>
+    <div class="work-layout">
+      <div class="work-intro">
+        <p>A selection of recent projects that blend strategy, design, and meaningful storytelling.</p>
+        <a class="btn-outline" href="#">View All Projects</a>
+      </div>
+      <div class="work-grid">
+        <div class="work-card">
+          <div class="work-thumb"><span>Project One</span></div>
+          <div class="work-meta">
+            <div><p>Project One</p><span>Web Design • UI/UX</span></div>
+            <span class="arrow">↗</span>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-thumb"><span>Project Two</span></div>
+          <div class="work-meta">
+            <div><p>Project Two</p><span>Branding • UI/UX</span></div>
+            <span class="arrow">↗</span>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-thumb"><span>Project Three</span></div>
+          <div class="work-meta">
+            <div><p>Project Three</p><span>Web Design • Branding</span></div>
+            <span class="arrow">↗</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="eyebrow">MY PROCESS</div>
+    <div class="section-title">Steps</div>
+    <div class="process-steps">
+      <div class="step"><div class="step-num">01</div><h5>Discover</h5><p>I learn about your goals and audience.</p></div>
+      <div class="step"><div class="step-num">02</div><h5>Define</h5><p>I research, analyze, and define the right direction.</p></div>
+      <div class="step"><div class="step-num">03</div><h5>Design</h5><p>I craft wireframes and visuals that bring ideas to life.</p></div>
+      <div class="step"><div class="step-num">04</div><h5>Develop</h5><p>I build pixel-perfect, working experiences.</p></div>
+      <div class="step"><div class="step-num">05</div><h5>Deliver</h5><p>I test, refine, and launch solutions that perform.</p></div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- CONTACT -->
+  <section class="section">
+    <div class="contact-top">
+      <div>
+        <div class="eyebrow">LET'S CREATE SOMETHING</div>
+        <div class="together">Together</div>
+      </div>
+      <div class="contact-note">
+        <p>I'm always open to new opportunities and collaborations. Let's build something great together.</p>
+        <a class="btn-outline" href="#">Let's Work Together</a>
+      </div>
+      <div class="avail-badge">
+        <svg viewBox="0 0 100 100" width="100" height="100">
+          <defs><path id="circlePath2" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs>
+          <text><textPath href="#circlePath2">AVAILABLE FOR FREELANCE • </textPath></text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="contact-footer">
+      <div>
+        <strong>Let's Connect</strong>
+      </div>
+      <div>
+        <strong>rajyadavvv016@gmail.com</strong><br>
+        +91 [8976077605]<br>
+        [Mumbai, India]
+      </div>
+      <div class="qr-block">
+        <div class="socials">
+          <span>in</span><span>ig</span><span>be</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="credit">Placeholder content — swap in your real photo, projects, and contact details.</footer>
+
+</body>
+</html>
